@@ -1,0 +1,185 @@
+<!-- Name: Anant Jain
+Student Id: 8869201
+Email: Ajain9201@conestogac.on.ca -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 1 - ANANT JAIN - 8869201 (Shopping App)</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+      integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link
+      href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light align-navbar">
+      <div>
+        <a
+          class="navbar-brand nav-links"
+          href="http://127.0.0.1:5500/index.html"
+        >
+          <img
+            src="assets\logo.png"
+            height="50px"
+            width="50px"
+            alt="Open Ribbon Logo"
+          />
+          Open Ribbon
+        </a>
+        <a
+          class="navbar-brand nav-links"
+          href="http://127.0.0.1:5500/index.html"
+          >Home</a
+        >
+      </div>
+      <a
+        class="navbar-brand cart"
+        id="checkoutButton"
+        href="#"
+        data-bs-toggle="modal"
+        data-bs-target="#checkoutModal"
+        onclick="onCheckoutClick()"
+        ><i class="icon-shopping-cart"> Checkout</i>
+      </a>
+    </nav>
+    <!-- Div to display all the product cards dynamically through javascript -->
+    <div class="align-products" id="cards"></div>
+    <!-- Add to cart modal to enter the product quantity displayed after clicking on add to cart button of any product -->
+    <div
+      class="modal fade"
+      tabindex="-1"
+      aria-hidden="true"
+      id="addToCartModal"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5">Please enter the quantity</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="quantity"
+              placeholder="Please enter a positive number greater than 0"
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              onclick="setOpenedModalIndexDefault()"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              onclick="addToCart()"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Checkout Modal to fill the name on the order -->
+    <div class="modal fade" tabindex="-1" aria-hidden="true" id="checkoutModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5">Please enter the name on the order</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="nameOnOrder"
+              placeholder="Enter name eg: Anant Jain"
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="placeOrder()"
+            >
+              Place Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Order Summary/Final Receipt modal to display the details of the order with shipping fees and taxes -->
+    <div class="modal fade" tabindex="-1" aria-hidden="true" id="finalReceipt">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5">Order Receipt</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <!-- div to load the content of the order receipt dynamically through javascript -->
+          <div class="modal-body mb-3" id="order-modal"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script async src="./script.js"></script>
+  </body>
+</html>

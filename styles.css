@@ -1,0 +1,41 @@
+/* style for product card */
+.card {
+  width: 18rem;
+  margin: 20px;
+  padding: 20px;
+}
+
+/* style to align content inside product card */
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+/* style to align all the product cards on the page */
+.align-products {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+/* style to align navbar items */
+.align-navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* navbar link margin */
+.nav-links {
+  margin-left: 20px;
+}
+
+/* checkout cart link margin */
+.cart {
+  margin-right: 40px;
+}
+
+/* checkout button will be hidden by default */
+#checkoutButton {
+  display: none;
+}
